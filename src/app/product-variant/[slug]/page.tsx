@@ -9,8 +9,8 @@ import { db } from "@/db";
 import { productTable, productVariantTable } from "@/db/schema";
 import { formatCentsToBRL } from "@/helpers/money";
 
-import VariantSelector from "../components/variant-selector";
 import ProductActions from "./components/product-actions";
+import VariantSelector from "./components/variant-selector";
 
 // import ProductActions from "./components/product-actions";
 // import VariantSelector from "./components/variant-selector";
