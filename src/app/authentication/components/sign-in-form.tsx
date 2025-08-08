@@ -76,6 +76,12 @@ export default function SignForm() {
     });
   }
 
+  const handleSignInWithGoogle = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <>
       <Card>
@@ -119,8 +125,17 @@ export default function SignForm() {
                 )}
               />
             </CardContent>
-            <CardFooter>
-              <Button type="submit">Entrar</Button>
+            <CardFooter className="flex flex-col gap-2">
+              <Button type="submit" className="w-full">
+                Entrar
+              </Button>
+              <Button
+                type="button"
+                className="w-full"
+                onClick={handleSignInWithGoogle}
+              >
+                Entrar com google
+              </Button>
             </CardFooter>
           </form>
         </Form>
