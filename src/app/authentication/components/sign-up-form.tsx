@@ -73,12 +73,11 @@ export default function SignupForm() {
         onError: (error) => {
           if (error.error.code === "USER_ALREADY_EXISTS") {
             toast.error("E-mail já cadastrado");
-            form.setError("email", {
+            return form.setError("email", {
               message: "Email já cadastrado",
             });
-
-            toast.error(error.error.message);
           }
+          toast.error(error.error.message);
         },
       },
     });
@@ -159,7 +158,7 @@ export default function SignupForm() {
               />
             </CardContent>
             <CardFooter>
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Cadastrar</Button>
             </CardFooter>
           </form>
         </Form>
