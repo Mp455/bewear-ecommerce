@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const CheckoutSuccessPage = () => {
+export default function CheckoutSuccessPage() {
   return (
     <>
       <Header />
@@ -49,6 +49,4 @@ const CheckoutSuccessPage = () => {
       </Dialog>
     </>
   );
-};
-
-export default CheckoutSuccessPage;
+}

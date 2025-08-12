@@ -1,10 +1,9 @@
-import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
 import Header from "@/components/common/header";
 import ProductItem from "@/components/common/product-item";
-import { db } from "@/db";
-import { categoryTable, productTable } from "@/db/schema";
+import { getCategoryWithProductsBySlug } from "@/data/categories/get-categories";
+import { ProductDTO } from "@/dtos/product.dto";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -14,30 +13,21 @@ interface CategoryPageProps {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const category = await db.query.categoryTable.findFirst({
-    where: eq(categoryTable.slug, slug),
-  });
+  const categoryWithProducts = await getCategoryWithProductsBySlug(slug);
 
-  if (!category) {
+  if (!categoryWithProducts) {
     return notFound();
   }
-
-  const products = await db.query.productTable.findMany({
-    where: eq(productTable.categoryId, category.id),
-    with: {
-      variants: true,
-    },
-  });
 
   return (
     <>
       <Header />
 
       <div className="space-y-6 px-5">
-        <h2 className="text-xl font-semibold">{category.name}</h2>
+        <h2 className="text-xl font-semibold">{categoryWithProducts.name}</h2>
 
         <div className="grid grid-cols-2">
-          {products.map((product) => (
+          {categoryWithProducts.products.map((product: ProductDTO) => (
             <ProductItem
               key={product.id}
               product={product}

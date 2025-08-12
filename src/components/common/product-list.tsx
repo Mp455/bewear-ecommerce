@@ -1,14 +1,12 @@
 "use client";
 
-import { productTable, productVariantTable } from "@/db/schema";
+import { ProductDTO } from "@/dtos/product.dto";
 
 import ProductItem from "./product-item";
 
 interface ProductListProps {
+  products: ProductDTO[];
   title: string;
-  products: (typeof productTable.$inferSelect & {
-    variants: (typeof productVariantTable.$inferSelect)[];
-  })[];
 }
 
 export default function ProductList({ title, products }: ProductListProps) {

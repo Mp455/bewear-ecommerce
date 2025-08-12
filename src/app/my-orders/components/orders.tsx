@@ -31,7 +31,7 @@ interface OrdersProps {
   }>;
 }
 
-const Orders = ({ orders }: OrdersProps) => {
+export default function Orders({ orders }: OrdersProps) {
   return (
     <div className="space-y-5">
       {orders.map((order) => (
@@ -121,6 +121,4 @@ const Orders = ({ orders }: OrdersProps) => {
       ))}
     </div>
   );
-};
-
-export default Orders;
+}

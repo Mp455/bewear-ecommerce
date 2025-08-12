@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { productVariantTable } from "@/db/schema";
+import { VariantDTO } from "@/dtos/variant.dto";
 import { cn } from "@/lib/utils";
 
 interface VariantSelectorProps {
   selectedVariantSlug: string;
-  variants: (typeof productVariantTable.$inferSelect)[];
+  variants: VariantDTO[];
 }
 
 export default function VariantSelector({
