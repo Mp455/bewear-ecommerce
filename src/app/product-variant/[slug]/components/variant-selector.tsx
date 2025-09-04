@@ -14,7 +14,7 @@ export default function VariantSelector({
   variants,
 }: VariantSelectorProps) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 md:flex-col md:items-start">
       {variants.map((variant) => (
         <Link
           href={`/product-variant/${variant.slug}`}

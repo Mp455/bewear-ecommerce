@@ -18,12 +18,21 @@ export default async function Home() {
       <div className="space-y-6">
         <div className="px-5">
           <Image
-            src="/banner-01.png"
+            src="/banner-m-01.png"
             alt="Leve uma vida com estilo"
             height={0}
             width={0}
             sizes="100vw"
-            className="h-auto w-full"
+            className="h-auto w-full md:hidden"
+          />
+
+          <Image
+            src="/banner-d-01.png"
+            alt="Leve uma vida com estilo"
+            height={0}
+            width={0}
+            sizes="100vw"
+            className="hidden h-auto w-full md:block"
           />
         </div>
 
@@ -35,16 +44,19 @@ export default async function Home() {
 
         <div className="px-5">
           <Image
-            src="/banner-02.png"
+            src="/banner-m-02.png"
             alt="Leve uma vida com estilo"
             height={0}
             width={0}
             sizes="100vw"
-            className="h-auto w-full"
+            className="h-auto w-full md:hidden"
           />
         </div>
 
-        <ProductList products={newlyCreatedProducts} title="Novos produtos" />
+        <div className="md:hidden">
+          <ProductList products={newlyCreatedProducts} title="Novos produtos" />
+        </div>
+
         <Footer />
       </div>
     </>
