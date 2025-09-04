@@ -7,6 +7,10 @@ import { auth } from "@/lib/auth";
 
 import Orders from "./components/orders";
 
+export const metadata = {
+  title: "Meus pedidos",
+};
+
 export default async function MyOrdersPage() {
   const session = await auth.api.getSession({
     headers: await headers(),

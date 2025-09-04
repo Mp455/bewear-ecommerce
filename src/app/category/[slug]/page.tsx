@@ -11,6 +11,10 @@ interface CategoryPageProps {
   }>;
 }
 
+export const metadata = {
+  title: "Categoria",
+};
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   const categoryWithProducts = await getCategoryWithProductsBySlug(slug);

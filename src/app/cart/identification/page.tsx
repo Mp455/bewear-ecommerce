@@ -10,6 +10,10 @@ import { auth } from "@/lib/auth";
 import CartSummary from "../components/cart-summary";
 import Addresses from "./components/addresses";
 
+export const metadata = {
+  title: "Indetificação",
+};
+
 export default async function IdentificationPage() {
   const session = await auth.api.getSession({
     headers: await headers(),
