@@ -16,6 +16,10 @@ export default async function Home() {
     <>
       <Header />
       <div className="space-y-6">
+        <div className="hidden px-5 md:block">
+          <CategorySelector categories={categories} />
+        </div>
+
         <div className="px-5">
           <Image
             src="/banner-m-01.png"
@@ -38,7 +42,7 @@ export default async function Home() {
 
         <ProductList products={products} title="Mais vendidos" />
 
-        <div className="px-5">
+        <div className="px-5 md:hidden">
           <CategorySelector categories={categories} />
         </div>
 

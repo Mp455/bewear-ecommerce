@@ -31,7 +31,8 @@ export default async function ProductVariantPage({
   return (
     <>
       <Header />
-      <div className="flex flex-col space-y-6 md:hidden">
+
+      <div className="flex flex-col space-y-6 lg:hidden">
         <Image
           src={productVariant.imageUrl}
           alt={productVariant.name}
@@ -55,7 +56,7 @@ export default async function ProductVariantPage({
           <h3 className="text-muted-foreground text-sm">
             {productVariant.name}
           </h3>
-          <h3 className="text-lg font-semibold">
+          <h3 className="mt-2 text-lg font-semibold">
             {formatCentsToBRL(productVariant.priceInCents)}
           </h3>
         </div>
@@ -63,60 +64,62 @@ export default async function ProductVariantPage({
         <ProductActions productVariantId={productVariant.id} />
 
         <div className="px-5">
-          <p className="text-shadow-amber-600">
-            {productVariant.product.description}
-          </p>
+          <p className="text-sm">{productVariant.product.description}</p>
         </div>
 
-        <ProductList title="Talvez você goste" products={likelyProducts} />
+        <ProductList products={likelyProducts} title="Talvez você goste" />
 
         <Footer />
       </div>
 
-      <div className="hidden space-y-6 md:grid md:grid-cols-4">
-        <Image
-          src={productVariant.imageUrl}
-          alt={productVariant.name}
-          sizes="100vw"
-          height={0}
-          width={0}
-          className="col-span-2 h-auto w-full object-cover"
-        />
+      <div className="hidden lg:block">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div className="space-y-4">
+              <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
+                <Image
+                  src={productVariant.imageUrl}
+                  alt={productVariant.name}
+                  sizes="50vw"
+                  height={600}
+                  width={600}
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+            </div>
 
-        <div className="col-span-2 flex flex-col justify-between space-y-6 px-5">
-          <div>
-            <h2 className="text-4xl font-semibold">
-              {productVariant.product.name}
-            </h2>
-            <h3 className="text-muted-foreground text-2xl">
-              {productVariant.name}
-            </h3>
-            <h3 className="text-2xl font-semibold">
-              {formatCentsToBRL(productVariant.priceInCents)}
-            </h3>
+            <div className="space-y-6">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  {productVariant.product.name}
+                </h1>
+                <h2 className="text-muted-foreground mt-1 text-lg">
+                  {productVariant.name}
+                </h2>
+                <p className="mt-4 text-3xl font-bold text-gray-900">
+                  {formatCentsToBRL(productVariant.priceInCents)}
+                </p>
+                <div className="mt-4">
+                  <VariantSelector
+                    selectedVariantSlug={productVariant.slug}
+                    variants={productVariant.product.variants}
+                  />
+                </div>
+              </div>
+
+              <ProductActions productVariantId={productVariant.id} />
+
+              <h3 className="text-md leading-relaxed font-semibold">
+                {productVariant.product.description}
+              </h3>
+            </div>
           </div>
 
-          <VariantSelector
-            selectedVariantSlug={productVariant.slug}
-            variants={productVariant.product.variants}
-          />
-
-          <ProductActions productVariantId={productVariant.id} />
-
-          <div className="px-5">
-            <p className="text-lg font-semibold text-shadow-amber-600">
-              {productVariant.product.description}
-            </p>
+          <div className="mt-16">
+            <ProductList products={likelyProducts} title="Talvez você goste" />
           </div>
         </div>
-
-        <div className="col-span-4">
-          <ProductList title="Talvez você goste" products={likelyProducts} />
-        </div>
-
-        <div className="col-span-4">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </>
   );
