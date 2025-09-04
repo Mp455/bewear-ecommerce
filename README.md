@@ -48,3 +48,10 @@ npx drizzle-kit migrate
   - [Tanstack React Query](https://tanstack.com/query/latest)
 
 -----------------------------------------------------
+
+## Deploy na Vercel
+
+O frontend da aplicação foi implantado na Vercel, garantindo fácil acesso e escalabilidade. A Vercel oferece integração contínua e deploy automático sempre que alterações são feitas no repositório.
+
+A aplicação pode ser acessada através do seguinte link: 
+- [Clique aqui para ver em projeto em produção](https://bewear-ecommerce-five.vercel.app/)
