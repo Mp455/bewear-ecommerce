@@ -13,10 +13,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-export const metadata = {
-  title: "Checkout",
-};
-
 export default function CheckoutSuccessPage() {
   return (
     <>
